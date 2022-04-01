@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css"
-class App extends Component {
+class TreinandoGrid extends Component {
   render() {
     return (
       <div>
@@ -10,11 +10,11 @@ class App extends Component {
           <div className="componenteEstilo ">🦈</div>
           <div className="componenteEstilo2 ">🦈</div>
           <div className="componenteEstilo2 ">🦈</div>
-          <div className="componenteEstilo ">🦈</div>
+          {/* <div className="componenteEstilo ">🦈</div> */}
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default TreinandoGrid;

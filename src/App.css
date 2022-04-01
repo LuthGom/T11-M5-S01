@@ -1,0 +1,26 @@
+.Container{
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px 100px;
+  grid-template-rows: repeat(5, 100px);
+
+}
+.componenteEstilo {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30;
+  /* grid-column: 1; */
+}
+.componenteEstilo2 {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30;
+  /* grid-column: 3; */
+}
