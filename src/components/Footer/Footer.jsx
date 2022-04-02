@@ -6,8 +6,8 @@ class Footer extends Component {
       width: "100%",
       height: "100px",
       backgroundImage:
-        "linear-gradient(red, orange, yellow, green, blue, purple, pink, white, black)",
-      color: "white",
+        "linear-gradient(90deg, black, white, red, orange, yellow, green, blue, purple, pink, white, black)",
+      color: "black",
       fontSize: "30px",
       fontWeight: "bold",
       display: "flex",
