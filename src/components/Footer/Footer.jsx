@@ -1,26 +1,11 @@
-import React, { Component } from "react";
-
-class Footer extends Component {
-  render() {
-    const footerEstilo = {
-      width: "100%",
-      height: "100px",
-      backgroundImage:
-        "linear-gradient(90deg, black, white, red, orange, yellow, green, blue, purple, pink, white, black)",
-      color: "black",
-      fontSize: "30px",
-      fontWeight: "bold",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: '2.5em'
-    };
-    return (
-      <div>
-        <footer style={footerEstilo}>Esse é o Footer da T11 🦈</footer>
-      </div>
-    );
-  }
+import React from "react";
+import styles from "./Footer.module.css";
+function Footer() {
+  return (
+    <div>
+      <footer className={styles.footerEstilo}>Esse é o Footer da T11 🦈</footer>
+    </div>
+  );
 }
 
 export default Footer;

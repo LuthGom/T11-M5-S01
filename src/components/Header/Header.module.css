@@ -1,0 +1,24 @@
+.headerEstilo {
+  width: 100%;
+  height: 100px;
+  background-image: linear-gradient(
+    90deg,
+    black,
+    white,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    purple,
+    pink,
+    white,
+    black
+  );
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
