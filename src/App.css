@@ -1,4 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 h1 {
     font-family: 'Rubik Glitch', cursive;
+    text-align: center;
 }
+/*
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+button {
+    text-align: center;
+    height: 100px;
+    width: 100px;
+} */
