@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../Input/Input.jsx";
 // import contactPic from "../../assets/contact-pic.jpg";
 import Button from "../Button/Button.jsx";
-import axios from "axios";
+import { api } from "../../services/Api.js";
 
 function Formulario() {
   const [value, setValue] = useState({});
@@ -10,15 +10,13 @@ function Formulario() {
   function handleChange(e) {
     setValue({ ...value, [e.target.name]: e.target.value });
   }
-const notify = () => toast("Carregando!")
   const Api = () => {
-    axios.post("https://vila-api.herokuapp.com/contacts", value);
+    api.post("/contacts", value);
   };
   console.log(value);
   function submit(e) {
     e.preventDefault();
     Api();
-    notify()
   }
   return (
     // Construímos um Componente de Input com tags input/type(text) e label reutilizáveis em qualquer lugar do projeto
