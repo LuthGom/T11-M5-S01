@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import Input from "../Input/Input.jsx";
-// import contactPic from "../../assets/contact-pic.jpg";
 import Button from "../Button/Button.jsx";
 import { api } from "../../services/Api.js";
 import {useNavigate} from "react-router-dom";
@@ -19,6 +18,7 @@ function Formulario() {
   function submit(e) {
     e.preventDefault();
     Api();
+    // utilizando navigate
     navigate("/")
   }
   return (
