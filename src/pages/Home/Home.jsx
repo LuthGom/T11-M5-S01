@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Cartao from "../../components/Cartão/Cartao.jsx";
 import { api } from "../../services/Api.js";
 function Home() {
   const [values, setValues] = useState([]);
@@ -9,20 +10,17 @@ function Home() {
         setValues(response.data);
         console.log("values", values);
       })
-      .catch((erro) => console.log("Tá errado!"));
+      .catch((erro) => console.log(erro));
   }, []);
 
   return (
     //   Atividade assíncrona da Aula 09
-    <div>
-      {values.map((item) => {
+    <div style={{display: 'grid', gridTemplateColumns: "repeat(3, 1fr)"}}>
+      {values.map((contato) => {
+        console.log("contato", contato);
         return (
-          <div key={item.id} style={{border: '1px solid black', width: '300px', padding:'1em', backgroundColor: 'red'}}>
-            <h1>{item.name}</h1>
-            <p>{item.email}</p>
-            <p>{item.phone}</p>)
-          </div>
-        );
+          <Cartao key={contato.id} name={contato.name} email={contato.email} phone={contato.phone} id={contato.id}/>
+        )
       })}
     </div>
   );
