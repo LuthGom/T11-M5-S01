@@ -1,12 +1,16 @@
+// O cartão é um componente que a priori, apenas recebia as informações dinâmicamente quando chamado na page Home.
+// Agora, ele possui um botão que recebe uma function. E dentro dessa function fazemos uma requisição com o Método DELETE para a API com o parametro :id.
+
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { api } from "../../services/Api";
 import Button from "../Button/Button";
-export default function Cartao({ id, name, email, phone, }) {
+export default function Cartao({ id, name, email, phone }) {
   const navigate = useNavigate();
   function handleDelete() {
-    api.delete("/contacts/" + id);
-    navigate("/")
+    api.delete("/fairies/" + id);
+    alert("Usuario deletado");
+    navigate("/");
   }
   return (
     <div
