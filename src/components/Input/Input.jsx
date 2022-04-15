@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./Input.module.css";
 
-function Input({nome, onChange, name, type, value}) {
+function Input({nome, onChange, name, type, value, contentEditable}) {
 
     return ( 
         <div className={styles.containerEstilo}>
@@ -13,6 +13,7 @@ function Input({nome, onChange, name, type, value}) {
           id="nome"
           value={value}
           onChange={onChange}
+          contentEditable={contentEditable}
         />
       </div>
      );

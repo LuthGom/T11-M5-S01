@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import Input from "../../components/Input/Input";
 import { api } from "../../services/Api";
+import Button from "../../components/Button/Button.jsx"
 export default function Visualizar() {
-  const [contato, setContato] = useState([]);
+  const [fada, setFada] = useState({});
+  const navigate = useNavigate()
   const { id } = useParams();
   useEffect(() => {
     api
-      .get(`/contacts/${id}`)
+      .get(`/fairies/${id}`)
       .then((response) => {
-        setContato(response.data);
+        setFada(response.data);
       })
       .catch((erro) => console.log(erro));
   }, []);
-  console.log(contato);
+  console.log(fada);
+  function handleOnChange(e) {
+    setFada({ ...fada, [e.target.name]: e.target.value });
+  }
+
+ function handleUpdate() {
+   api.put("/fairies/" + id, fada)
+   navigate("/")
+ }
+  
   return (
     <div
       style={{
@@ -29,9 +41,10 @@ export default function Visualizar() {
         alignItems: "center",
       }}
     >
-      <h1>{contato.name}</h1>
-      <h2>{contato.email}</h2>
-      <h3>{contato.phone}</h3>
+      <Input value={fada.name} onChange={handleOnChange} name="name"/>
+      <Input value={fada.element} onChange={handleOnChange} name="element"/>
+      <Input value={fada.health_point} onChange={handleOnChange} name="health_point" />
+      <Button nome="Atualizar" click={handleUpdate}/>
     </div>
   );
 }

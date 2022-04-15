@@ -5,7 +5,7 @@ function Home() {
   const [values, setValues] = useState([]);
   useEffect(() => {
     api
-      .get("/contacts")
+      .get("/fairies")
       .then((response) => {
         setValues(response.data);
         console.log("values", values);
@@ -15,12 +15,18 @@ function Home() {
 
   return (
     //   Atividade assíncrona da Aula 09
-    <div style={{display: 'grid', gridTemplateColumns: "repeat(3, 1fr)"}}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
       {values.map((contato) => {
         console.log("contato", contato);
         return (
-          <Cartao key={contato.id} name={contato.name} email={contato.email} phone={contato.phone} id={contato.id}/>
-        )
+          <Cartao
+            key={contato.id}
+            name={contato.name}
+            email={contato.element}
+            phone={contato.health_point}
+            id={contato.id}
+          />
+        );
       })}
     </div>
   );
