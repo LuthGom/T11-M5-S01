@@ -1,25 +1,20 @@
 import React from "react";
-import styles from "./Input.module.css";
+import { Container, InputTexto } from "./InputStyled.jsx";
 
-function Input({
-  nome,
-  onChange,
-  name,
-  type,
-  value,
-}) {
+function Input({ nome, onChange, name, type, value }) {
+      // Criamos uma estilização com styled feita em arquivo separado e chamada aqui como Container e o InputTexto
+
   return (
-    <div className={styles.containerEstilo}>
+    <Container>
       <label htmlFor="nome">{nome}</label>
-      <input
-        className={styles.inputEstilo}
+      <InputTexto
         type={type}
         name={name}
         id="nome"
         value={value}
         onChange={onChange}
       />
-    </div>
+    </Container>
   );
 }
 

@@ -10,56 +10,54 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Input from "../../components/Input/Input";
-import { api } from "../../services/Api";
+import { drinksPorId } from "../../services/Api";
 import Button from "../../components/Button/Button.jsx";
+import { Container } from "./VisualizarStyled";
+import axios from "axios";
 export default function Visualizar() {
-  const [fada, setFada] = useState({});
+  // const [fada, setFada] = useState({});
+  const [drink, setDrink] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log(id);
   useEffect(() => {
-    api
-      .get(`/fairies/${id}`)
+    drinksPorId
+    .get(`/lookup.php?i=${id}`)
       .then((response) => {
-        setFada(response.data);
+        setDrink(response.data.drinks[0]);
+        console.log("data", response.data.drinks[0]);
       })
       .catch((erro) => console.log(erro));
   }, []);
-  console.log("fada", fada);
-  function handleOnChange(e) {
-    setFada({ ...fada, [e.target.name]: e.target.value });
-  }
-
-  function handleUpdate() {
-    api.put("/fairies/" + id, fada);
-    alert("Atualizado com sucesso")
-    navigate("/")
-    
-  }
+  // function handleOnChange(e) {
+  //   setFada({ ...drink, [e.target.name]: e.target.value });
+  // }
+  // function de update comentada por trocamos a API
+  // function handleUpdate() {
+  //   api.put("/fairies/" + id, drink);
+  //   alert("Atualizado com sucesso");
+  //   navigate("/");
+  // }
 
   return (
-    <div
-      style={{
-        width: "250px",
-        height: "250px",
-        border: "1px solid black",
-        borderRadius: "10px",
-        margin: "1em",
-        padding: "1em",
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Input value={fada.name} onChange={handleOnChange} name="name" />
-      <Input value={fada.element} onChange={handleOnChange} name="element" />
-      <Input
-        value={fada.health_point}
-        onChange={handleOnChange}
-        name="health_point"
-      />
-      <Button nome="Atualizar" click={handleUpdate} />
-    </div>
+  //   {/* <Input value={fada.name} onChange={handleOnChange} name="name" />
+  //   <Input value={fada.element} onChange={handleOnChange} name="element" />
+  //   <Input
+  //   value={fada.health_point}
+  //   onChange={handleOnChange}
+  //   name="health_point"
+  //   />
+  // <Button nome="Atualizar" click={handleUpdate} /> */}
+  
+  //Um componente styled criadoem arquivo para estilizar todo o componente e, fazendo uma requisição get/:id para trazer o item quando clicado no botão de visualizar na página home, redirecionando para este componente.
+  <Container>
+      <h1>
+        <span style={{ color: "red" }}>Drink: </span> {drink.strDrink}
+      </h1>
+      <img src={drink.strDrinkThumb} alt="" />
+      <p>
+        <strong>Instructions: </strong> {drink.strInstructions}
+      </p>
+    </Container>
   );
 }
