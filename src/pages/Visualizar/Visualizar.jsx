@@ -8,7 +8,7 @@
 // 4. Por fim, criamos uma função chamada handleUpdate(linha 32) com o método PUT, que faz uma requisição de atualização dos nossos dados vindo da API, que recebe dois parametros: o endpoint da rota e os dados que estamos enviando para serem alterados. Temos um botão de nome "Atualizar" que recebe no atributo de evento onClick essa função e a nossa requisição é realizada somente quando essa requisição é feita. E ainda dentro dessa função handleAtualizar temos um navigate(hook do router) que nos leva à Home. (Coloquei um alert extra como mensagem para avisar que atualizou antes da Home)
 
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { drinksPorId } from "../../services/Api";
 import { Container } from "./VisualizarStyled";
 export default function Visualizar() {
@@ -17,13 +17,13 @@ export default function Visualizar() {
   console.log(id);
   useEffect(() => {
     drinksPorId
-    .get(`/lookup.php?i=${id}`)
+      .get(`/lookup.php?i=${id}`)
       .then((response) => {
         setDrink(response.data.drinks[0]);
         console.log("data", response.data.drinks[0]);
       })
       .catch((erro) => console.log(erro));
-  }, []);
+  }, [id]);
   // function handleOnChange(e) {
   //   setFada({ ...drink, [e.target.name]: e.target.value });
   // }
@@ -35,17 +35,17 @@ export default function Visualizar() {
   // }
 
   return (
-  //   {/* <Input value={fada.name} onChange={handleOnChange} name="name" />
-  //   <Input value={fada.element} onChange={handleOnChange} name="element" />
-  //   <Input
-  //   value={fada.health_point}
-  //   onChange={handleOnChange}
-  //   name="health_point"
-  //   />
-  // <Button nome="Atualizar" click={handleUpdate} /> */}
-  
-  //Um componente styled criadoem arquivo para estilizar todo o componente e, fazendo uma requisição get/:id para trazer o item quando clicado no botão de visualizar na página home, redirecionando para este componente.
-  <Container>
+    //   {/* <Input value={fada.name} onChange={handleOnChange} name="name" />
+    //   <Input value={fada.element} onChange={handleOnChange} name="element" />
+    //   <Input
+    //   value={fada.health_point}
+    //   onChange={handleOnChange}
+    //   name="health_point"
+    //   />
+    // <Button nome="Atualizar" click={handleUpdate} /> */}
+
+    //Um componente styled criadoem arquivo para estilizar todo o componente e, fazendo uma requisição get/:id para trazer o item quando clicado no botão de visualizar na página home, redirecionando para este componente.
+    <Container>
       <h1>
         <span style={{ color: "red" }}>Drink: </span> {drink.strDrink}
       </h1>
