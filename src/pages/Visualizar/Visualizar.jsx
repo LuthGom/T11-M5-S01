@@ -9,15 +9,10 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Input from "../../components/Input/Input";
 import { drinksPorId } from "../../services/Api";
-import Button from "../../components/Button/Button.jsx";
 import { Container } from "./VisualizarStyled";
-import axios from "axios";
 export default function Visualizar() {
-  // const [fada, setFada] = useState({});
   const [drink, setDrink] = useState([]);
-  const navigate = useNavigate();
   const { id } = useParams();
   console.log(id);
   useEffect(() => {

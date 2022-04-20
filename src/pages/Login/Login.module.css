@@ -1,0 +1,31 @@
+.form {
+    background-color: #FEF4F4;
+}
+.titulo h1{
+    margin: 0;
+    padding-top: 1em;
+}
+.container {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1em;
+  background-color: #FEF4F4;
+}
+.linkCadastro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.linkCadastro p {
+  font-weight: bold;
+}
+.linkCadastro a {
+  margin-left: 5px;
+  color: #868da0;
+}
+.linkCadastro a:hover {
+  color: red;
+}

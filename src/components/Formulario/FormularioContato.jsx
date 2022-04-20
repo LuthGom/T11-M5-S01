@@ -7,20 +7,20 @@ import React, { useState } from "react";
 import Input from "../Input/Input.jsx";
 import Button from "../Button/Button.jsx";
 import { cadastroUser } from "../../services/Api.js";
-import { useNavigate } from "react-router-dom";
-import { Container, Col, Row } from "react-bootstrap";
 function Formulario() {
-  const navigate = useNavigate();
   const [value, setValue] = useState({});
-  console.log(value);
   function handleChange(e) {
     setValue({ ...value, [e.target.name]: e.target.value });
   }
   console.log("value", value);
   const Api = () => {
-    cadastroUser.post("/usuario", value);
+    cadastroUser.post("/usuario", value)
+    .then((response)=>{
+      console.log(response.data);
+    })
+    .catch((erro) => console.log(erro))
   };
-  console.log(value);
+  // console.log(value);
   function submit(e) {
     e.preventDefault();
     Api();
@@ -32,14 +32,14 @@ function Formulario() {
     // Aqui temos dois componentes react-bootstrap para estilização em grid: Col (de colunas) e Row de (linhas)
     // Roda o projeto e dá uma olhad em como fica.
     <form onSubmit={submit}>
-      <Container>
-        <Row>
-          <Col>
+      {/* <Container> */}
+        {/* <Row> */}
+          {/* <Col> */}
             <Input nome="Nome" onChange={handleChange} name="nome" />
 
             <Input nome="Apelido" onChange={handleChange} name="apelido" />
-          </Col>
-          <Col>
+          {/* </Col> */}
+          {/* <Col> */}
             <Input nome="Email" onChange={handleChange} name="email" />
 
             <Input
@@ -48,14 +48,14 @@ function Formulario() {
               name="senha"
               type="password"
             />
-          </Col>
-        </Row>
-        <Row>
+          {/* </Col> */}
+        {/* </Row> */}
+        {/* <Row> */}
           <div style={{ margin: "1em 0" }}>
             <Button nome="Enviar" />
           </div>
-        </Row>
-      </Container>
+        {/* </Row> */}
+      {/* </Container> */}
     </form>
   );
 }

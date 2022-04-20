@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Cartao from "../../components/Cartão/Cartao.jsx";
-import { api, drinksURl } from "../../services/Api.js";
+import { drinksURl } from "../../services/Api.js";
 
 function Home() {
   const [values, setValues] = useState([]);
@@ -12,7 +12,7 @@ function Home() {
         console.log("values", values);
       })
       .catch((erro) => console.log(erro));
-  }, []);
+  }, [values]);
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
