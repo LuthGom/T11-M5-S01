@@ -11,3 +11,7 @@ export const drinksURl = axios.create({
 export const drinksPorId = axios.create({
     baseURL: `https://www.thecocktaildb.com/api/json/v1/1`
 })
+
+export const cadastroUser = axios.create({
+    baseURL: `https://api-loja-t11.herokuapp.com`
+})

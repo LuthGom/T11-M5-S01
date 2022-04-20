@@ -7,6 +7,7 @@ import Contato from "./pages/Contato/Contato.jsx";
 import PaginaDeErro from "./pages/PaginaDeErro/PaginaDeErro.jsx";
 import Home from "./pages/Home/Home";
 import Visualizar from "./pages/Visualizar/Visualizar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [desabilitado, setDesabilitado] = useState(false);
   const [value, setValue] = useState("");
