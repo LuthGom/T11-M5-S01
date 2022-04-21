@@ -31,7 +31,7 @@ function Perfil() {
     setUsuario({ ...usuario, [e.target.name]: e.target.value });
   }
   return (
-    <form onSubmit={handleUpdate}>
+    <div>
       <Input name="nome" value={usuario.nome} onChange={handleOnChange} />
       <Input name="apelido" value={usuario.apelido} onChange={handleOnChange} />
       <Input name="email" value={usuario.email} onChange={handleOnChange} />
@@ -42,10 +42,10 @@ function Perfil() {
         onChange={handleOnChange}
       />
       <div style={{ display: "flex" }}>
-        <Button nome="Atualizar Dados" />
+        <Button nome="Atualizar Dados" click={handleUpdate}/>
         <Button nome="Deletar conta" onClick={() => handleDelete()} />
       </div>
-    </form>
+    </div>
   );
 }
 
