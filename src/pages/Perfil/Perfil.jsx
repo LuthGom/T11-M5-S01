@@ -3,6 +3,7 @@ import Input from "../../components/Input/Input";
 import { cadastroUser } from "../../services/Api.js";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import { Container } from "./PerfilStyled";
 function Perfil() {
   const { id } = useParams();
   const [usuario, setUsuario] = useState({});
@@ -22,30 +23,40 @@ function Perfil() {
       .then((response) => {
         console.log(response.data);
       });
+
+    // Chamando o método reload do javascript só pra recarregar a página depois de atualizado
+    document.location.reload();
   }
   function handleDelete() {
-    cadastroUser.delete("/" + usuario.email);
+    cadastroUser.delete("/usuario/" + usuario.email);
     navigate("/");
   }
   function handleOnChange(e) {
     setUsuario({ ...usuario, [e.target.name]: e.target.value });
   }
   return (
-    <div>
-      <Input name="nome" value={usuario.nome} onChange={handleOnChange} />
-      <Input name="apelido" value={usuario.apelido} onChange={handleOnChange} />
-      <Input name="email" value={usuario.email} onChange={handleOnChange} />
-      <Input
-        name="senha"
-        type="password"
-        value={usuario.senha}
-        onChange={handleOnChange}
-      />
-      <div style={{ display: "flex" }}>
-        <Button nome="Atualizar Dados" click={handleUpdate}/>
-        <Button nome="Deletar conta" onClick={() => handleDelete()} />
+    <Container>
+      <div className="containerSecundario">
+        <h1>Olá, {usuario.apelido}</h1>
+        <Input name="nome" value={usuario.nome} onChange={handleOnChange} />
+        <Input
+          name="apelido"
+          value={usuario.apelido}
+          onChange={handleOnChange}
+        />
+        <Input name="email" value={usuario.email} onChange={handleOnChange} />
+        <Input
+          name="senha"
+          type="password"
+          value={usuario.senha}
+          onChange={handleOnChange}
+        />
+        <div className="divButtons">
+          <Button nome="Atualizar Dados" click={handleUpdate} />
+          <Button nome="Deletar conta" click={() => handleDelete()} />
+        </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

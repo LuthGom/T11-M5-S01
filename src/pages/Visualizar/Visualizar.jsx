@@ -24,34 +24,18 @@ export default function Visualizar() {
       })
       .catch((erro) => console.log(erro));
   }, [id]);
-  // function handleOnChange(e) {
-  //   setFada({ ...drink, [e.target.name]: e.target.value });
-  // }
-  // function de update comentada por trocamos a API
-  // function handleUpdate() {
-  //   api.put("/fairies/" + id, drink);
-  //   alert("Atualizado com sucesso");
-  //   navigate("/");
-  // }
 
   return (
-    //   {/* <Input value={fada.name} onChange={handleOnChange} name="name" />
-    //   <Input value={fada.element} onChange={handleOnChange} name="element" />
-    //   <Input
-    //   value={fada.health_point}
-    //   onChange={handleOnChange}
-    //   name="health_point"
-    //   />
-    // <Button nome="Atualizar" click={handleUpdate} /> */}
+    //
 
     //Um componente styled criadoem arquivo para estilizar todo o componente e, fazendo uma requisição get/:id para trazer o item quando clicado no botão de visualizar na página home, redirecionando para este componente.
     <Container>
       <h1>
-        <span style={{ color: "red" }}>Drink: </span> {drink.strDrink}
+        <span>Drink: </span> {drink.strDrink}
       </h1>
       <img src={drink.strDrinkThumb} alt="" />
       <p>
-        <strong>Instructions: </strong> {drink.strInstructions}
+        <span>Instructions: </span> {drink.strInstructions}
       </p>
     </Container>
   );

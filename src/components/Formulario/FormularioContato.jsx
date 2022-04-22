@@ -7,55 +7,50 @@ import React, { useState } from "react";
 import Input from "../Input/Input.jsx";
 import Button from "../Button/Button.jsx";
 import { cadastroUser } from "../../services/Api.js";
+import { useNavigate } from "react-router-dom";
 function Formulario() {
   const [value, setValue] = useState({});
+  const navigate = useNavigate();
   function handleChange(e) {
     setValue({ ...value, [e.target.name]: e.target.value });
   }
   console.log("value", value);
   const Api = () => {
-    cadastroUser.post("/usuario", value)
-    .then((response)=>{
-      console.log(response.data);
-    })
-    .catch((erro) => console.log(erro))
+    cadastroUser
+      .post("/usuario", value)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((erro) => console.log(erro));
   };
   // console.log(value);
   function submit(e) {
     e.preventDefault();
     Api();
     // utilizando navigate
-    // navigate("/");
+    navigate("/login");
   }
   return (
     // Construímos um Componente de Input com tags input/type(text) e label reutilizáveis em qualquer lugar do projeto
     // Aqui temos dois componentes react-bootstrap para estilização em grid: Col (de colunas) e Row de (linhas)
     // Roda o projeto e dá uma olhad em como fica.
-    <form onSubmit={submit}>
-      {/* <Container> */}
-        {/* <Row> */}
-          {/* <Col> */}
-            <Input nome="Nome" onChange={handleChange} name="nome" />
+    <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={submit}>
+      <Input nome="Nome" onChange={handleChange} name="nome" />
 
-            <Input nome="Apelido" onChange={handleChange} name="apelido" />
-          {/* </Col> */}
-          {/* <Col> */}
-            <Input nome="Email" onChange={handleChange} name="email" />
+      <Input nome="Apelido" onChange={handleChange} name="apelido" />
 
-            <Input
-              nome="Senha"
-              onChange={handleChange}
-              name="senha"
-              type="password"
-            />
-          {/* </Col> */}
-        {/* </Row> */}
-        {/* <Row> */}
-          <div style={{ margin: "1em 0" }}>
-            <Button nome="Enviar" />
-          </div>
-        {/* </Row> */}
-      {/* </Container> */}
+      <Input nome="Email" onChange={handleChange} name="email" />
+
+      <Input
+        nome="Senha"
+        onChange={handleChange}
+        name="senha"
+        type="password"
+      />
+
+      <div style={{ margin: "1em 2.5em" }}>
+        <Button nome="Enviar" />
+      </div>
     </form>
   );
 }

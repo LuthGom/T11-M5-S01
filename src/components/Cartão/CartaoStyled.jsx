@@ -1,27 +1,30 @@
 import styled from "styled-components";
 export const Container = styled.div`
-  width: 250px;
-  height: 300px;
-  border: 1px solid black;
-  border-radius: 10px;
   margin: 1em;
-  padding: 1em;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  h1 {
-    font-family: "Courier New", Courier, monospace;
+  justify-content: center;
+  p {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    text-align: center;
+    font-size: 14px;
+    margin: 0.5em;
   }
   img {
     width: 150px;
     height: 150px;
   }
   a {
-    color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
     margin: 0.5em;
+    padding: 0.5em;
+    text-decoration: none;
   }
-  a:hover{
-      color: red;
+  a:hover {
+    color: green;
+    background-color: pink;
   }
 `;

@@ -6,7 +6,7 @@ function Header() {
     <div>
       <header className={styles.headerEstilo}>
         <Link to="/">Home</Link>
-        <Link to="/contato">Contato</Link>
+        <Link to="/cadastro">Cadastro</Link>
         <Link to="/drinks">Drinks</Link>
         <Link to="/login">Login</Link>
       </header>

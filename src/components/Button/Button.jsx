@@ -7,10 +7,12 @@ function Botao({ click, nome }) {
   //   border-radius: 10px;
   // `;
   return (
-    <div>
+    <>
       {/* importamos um componente do react-bootstrap já pronto e estilizamos utilizando a props 'variant' que o próprio bootstrap já traz para alternarmos entre as propriedades que ele já criou. */}
-      <Button variant="success" type="submit" onClick={click}>{nome}</Button>
-    </div>
+      <Button variant="success" type="submit" onClick={click}>
+        {nome}
+      </Button>
+    </>
   );
 }
 

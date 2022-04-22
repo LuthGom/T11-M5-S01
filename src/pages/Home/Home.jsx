@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Cartao from "../../components/Cartão/Cartao.jsx";
 import { drinksURl } from "../../services/Api.js";
-
+import { Container } from "./HomeStyled.jsx";
 function Home() {
   const [values, setValues] = useState([]);
   useEffect(() => {
@@ -15,7 +15,7 @@ function Home() {
   }, [values]);
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+    <Container>
       {values.map((drink) => {
         // console.log("contato", contato);
         return (
@@ -27,7 +27,7 @@ function Home() {
           />
         );
       })}
-    </div>
+    </Container>
   );
 }
 

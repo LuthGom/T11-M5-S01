@@ -5,15 +5,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container } from "./CartaoStyled";
 export default function Cartao({ id, name, img }) {
-
   return (
     // Criamos uma estilização com styled feita em arquivo separado e chamada aqui como Container
     <Container>
-      <h1>{name}</h1>
-      <img src={img} alt=""/>
+      <Link to={"/visualizar/" + id}>
+          <img src={img} alt="" />
+          <p>{name}</p>
 
-      {/* usando Link */}
-      <Link to={"/visualizar/" + id}>Visualizar</Link>
+          {/* usando Link */}
+      </Link>
       {/* <Button nome="Deletar" click={handleDelete} /> */}
     </Container>
   );

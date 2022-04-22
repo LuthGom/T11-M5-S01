@@ -13,12 +13,19 @@ export const Container = styled.div`
 
   h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: green;
+  }
+  span {
+    color: pink;
+    font-weight: bold;
   }
   img{
     width: 200px;
     height: 200px;
   }
   p {
+    margin: 0.5em;
     text-align: center;
+    color: green;
   }
 `;

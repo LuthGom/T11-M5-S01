@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button"
+import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.css";
 import { cadastroUser } from "../../services/Api.js";
@@ -19,33 +19,35 @@ function Login() {
   }
   // console.log(value);
   return (
-    <form className={styles.form} onSubmit={(e) => login(e)}>
-      <div className={styles.titulo}>
-        <h1>Login</h1>
-      </div>
-      <div className={styles.container}>
-        <Input
-          placeholder="E-mail"
-          height="20px"
-          width="250px"
-          onChange={handleOnChange}
-          name="email"
-        />
-        <Input
-          placeholder="Senha"
-          height="20px"
-          width="250px"
-          type="password"
-          name="senha"
-          onChange={handleOnChange}
-        />
-        <div>
-         <Button nome="Login" />
+    <form onSubmit={(e) => login(e)}>
+      <div className={styles.divForm} >
+        <div className={styles.titulo}>
+          <h1>Login</h1>
         </div>
-      </div>
-      <div className={styles.linkCadastro}>
-        <p>Não tem uma conta ainda? </p>
-        <Link to="/cadastro">Clique aqui!</Link>
+        <div className={styles.container}>
+          <Input
+            placeholder="E-mail"
+            height="20px"
+            width="250px"
+            onChange={handleOnChange}
+            name="email"
+          />
+          <Input
+            placeholder="Senha"
+            height="20px"
+            width="250px"
+            type="password"
+            name="senha"
+            onChange={handleOnChange}
+          />
+          <div style={{margin: '0.5em'}}>
+            <Button nome="Login" />
+          </div>
+        </div>
+        <div className={styles.linkCadastro}>
+          <p>Não tem uma conta ainda? </p>
+          <Link to="/cadastro">Clique aqui!</Link>
+        </div>
       </div>
     </form>
   );
