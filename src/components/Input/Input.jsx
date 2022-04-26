@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "./InputStyled.jsx";
 import {FormControl, FormLabel } from 'react-bootstrap';
 
-function Input({ nome, onChange, name, type, value }) {
+function Input({ nome, onChange, name, type, register, value }) {
       // Criamos uma estilização com styled feita em arquivo separado e chamada aqui como Container e o InputTexto
 
   return (
@@ -16,6 +16,8 @@ function Input({ nome, onChange, name, type, value }) {
         id="nome"
         value={value}
         onChange={onChange}
+    // criamos uma props de nome register e passamos para o input para que ele entenda que: quando o componente <Input /> for chamado, ele pode receber como argumento dentro dessa props um objeto com valores vindos do componente register do useForm, onde quer que ele seja chamado.
+        {...register}
       />
     </Container>
   );

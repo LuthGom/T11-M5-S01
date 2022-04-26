@@ -9,7 +9,7 @@ function Home() {
       .get("")
       .then((response) => {
         setValues(response.data.drinks);
-        console.log("values", values);
+        // console.log("values", values);
       })
       .catch((erro) => console.log(erro));
   }, [values]);
