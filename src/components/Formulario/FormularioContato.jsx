@@ -10,18 +10,20 @@ import { cadastroUser } from "../../services/Api.js";
 import { useNavigate } from "react-router-dom";
 // importams o useForm da lib que instalamos
 import { useForm } from "react-hook-form";
-function Formulario() {
+function Formulario({nome}) {
   const [value, setValue] = useState({});
   // desestruturamos dois de seus componentes para utiliza-los. Essa é sintaxe
-  const { register, handleSubmit } = useForm();
+  // importamos um outro componente do useForm, o forState que dentro várias propriedades, possui uma validação de errors.
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   function handleChange(e) {
     setValue({ ...value, [e.target.name]: e.target.value });
   }
   // console.log("value", value);
-  const Api = (value) => {
+  // passamos um parametro data à função anonima para que esta "entenda" que os valores passados a ela pelo objeto criado pelo forms seja enviado como body da requisição de post.
+  const Api = (data) => {
     cadastroUser
-      .post("/usuario", value)
+      .post("/usuario", data)
       .then((response) => {
         // console.log(response.data);
       })
@@ -47,6 +49,7 @@ function Formulario() {
       style={{ display: "flex", flexDirection: "column" }}
       // passamos o handleSubmit do useForm para o atributo onSubmit da tag form para:
       // o handleSubmit monitora todos inputs que estão "abraçados" pela tag form DESDE QUE estes inputs recebam o componente register do useForm e recebam um nome com primeiro parametro. O conjunto desses inputs nos retorna um objeto do jeito: {nome_do_input: value_digitado_no_input}
+      // passamos a função anonimica  (que faz a requisição de post) como o argumento do handleSubit. Então, o handleSubmit(que monitora todos os inputs com o register), vai pegar esse objeto de valores gerado e enviar como argumento (lembra do parametro data que criamos ao declarar a function Api()?)
       onSubmit={handleSubmit(Api)}
     >
       <Input
@@ -54,7 +57,9 @@ function Formulario() {
         register={register("nome", { required: true })}
         onChange={handleChange}
       />
-
+      {/* uma lógica que monitora o input pelo nome e declara uma consequência caso a validação passada no register para esse input não seja atendida.
+      Nesse caso a validação foi de um required: true para que o campo seja de preenchimento obrigatório. */}
+      {errors.nome && <p style={{color: "white"}}>Este campo é obrigatório!</p> }
       <Input
         nome="Apelido"
         onChange={handleChange}
@@ -77,7 +82,7 @@ function Formulario() {
       />
 
       <div style={{ margin: "1em 2.5em" }}>
-        <Button nome="Enviar" />
+        <Button nome={nome} />
       </div>
     </form>
   );

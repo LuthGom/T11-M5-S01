@@ -4,7 +4,7 @@ function Contato() {
     return (
         <div>
             <h1 style={{color: "pink", textAlign: 'center', margin: '0.5em'}}>Cadastro</h1>
-            <Formulario />
+            <Formulario nome="Enviar"/>
         </div>
       );
 }

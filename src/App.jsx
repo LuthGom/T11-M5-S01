@@ -9,27 +9,43 @@ import Home from "./pages/Home/Home";
 import Visualizar from "./pages/Visualizar/Visualizar";
 import Login from "./pages/Login/Login";
 import Perfil from "./pages/Perfil/Perfil";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ContextThemes } from "./components/ContextThemes/ContextextThemes.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
 function App() {
+  // criamos um objeto que será acessível, pois passamos ele como um conexto global para toda a aplicação, usando o ContextThemes.Provider, que engloba todos os componentes.
+  const themes = {
+    light: {
+      foreground: "#000000",
+      background: "#eeeeee"
+    },
+    dark: {
+      foreground: "#ffffff",
+      background: "#222222"
+    }
+  };
   return (
     <div className="app">
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/visualizar/:id" element={<Visualizar />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/perfil/:id" element={<Perfil />} />
-          <Route path="*" element={<PaginaDeErro />} />
-        </Routes>
-      </Router>
+      {/* Onde declaramos o ContextThemes como nosso componente global que rebece um objeto no atributo value para que seja acessado de qualquer lugar. */}
+      <ContextThemes.Provider value={themes}>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/visualizar/:id" element={<Visualizar />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/perfil/:id" element={<Perfil />} />
+            <Route path="*" element={<PaginaDeErro />} />
+          </Routes>
+        </Router>
+      </ContextThemes.Provider>
       <div>
         <Footer />
       </div>
     </div>
   );
 }
-
 
 export default App;
