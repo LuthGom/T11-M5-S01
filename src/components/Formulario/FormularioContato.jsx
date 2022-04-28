@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import Input from "../Input/Input.jsx";
 import Button from "../Button/Button.jsx";
 import { cadastroUser } from "../../services/Api.js";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // importams o useForm da lib que instalamos
 import { useForm } from "react-hook-form";
 function Formulario({nome}) {
@@ -15,7 +15,7 @@ function Formulario({nome}) {
   // desestruturamos dois de seus componentes para utiliza-los. Essa é sintaxe
   // importamos um outro componente do useForm, o forState que dentro várias propriedades, possui uma validação de errors.
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   function handleChange(e) {
     setValue({ ...value, [e.target.name]: e.target.value });
   }
@@ -30,17 +30,17 @@ function Formulario({nome}) {
       .catch((erro) => console.log(erro));
   };
   // console.log(value);
-  function submit(e) {
-    e.preventDefault();
-    Api();
-    // utilizando navigate
-    navigate("/login");
-  }
+  // function submit(e) {
+  //   e.preventDefault();
+  //   Api();
+  //   // utilizando navigate
+  //   navigate("/login");
+  // }
 
-  function onSubmit(data) {
-    console.log(data);
-    navigate("/perfil");
-  }
+  // function onSubmit(data) {
+  //   console.log(data);
+  //   navigate("/perfil");
+  // }
   return (
     // Construímos um Componente de Input com tags input/type(text) e label reutilizáveis em qualquer lugar do projeto
     // Aqui temos dois componentes react-bootstrap para estilização em grid: Col (de colunas) e Row de (linhas)
@@ -79,6 +79,7 @@ function Formulario({nome}) {
         onChange={handleChange}
         type="password"
         register={register("senha", { required: true })}
+        
       />
 
       <div style={{ margin: "1em 2.5em" }}>
