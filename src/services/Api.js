@@ -4,8 +4,9 @@ export const api = axios.create({
     baseURL: "https://vila-api.herokuapp.com"
 })
 
-export const drinksURl = axios.create({
-    baseURL: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
+// adaptamos a url de drinks por ingredientes em uma função anônima para que receba um parametro de forma dinâmica.
+export const drinksURl = (drink) => axios.create({
+    baseURL: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${drink}`
 })
 
 export const drinksPorId = axios.create({

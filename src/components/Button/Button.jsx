@@ -9,7 +9,7 @@ function Botao({ click, nome }) {
   return (
     <>
       {/* importamos um componente do react-bootstrap já pronto e estilizamos utilizando a props 'variant' que o próprio bootstrap já traz para alternarmos entre as propriedades que ele já criou. */}
-      <Button variant="success" type="submit" onClick={click}>
+      <Button variant="success" type="submit"  onClick={click}>
         {nome}
       </Button>
     </>

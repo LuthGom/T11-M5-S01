@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import Input from "../Input/Input.jsx";
 import Button from "../Button/Button.jsx";
 import { cadastroUser } from "../../services/Api.js";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // importams o useForm da lib que instalamos
 import { useForm } from "react-hook-form";
 function Formulario({nome}) {
@@ -15,7 +15,7 @@ function Formulario({nome}) {
   // desestruturamos dois de seus componentes para utiliza-los. Essa é sintaxe
   // importamos um outro componente do useForm, o forState que dentro várias propriedades, possui uma validação de errors.
   const { register, handleSubmit, formState: { errors } } = useForm();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   function handleChange(e) {
     setValue({ ...value, [e.target.name]: e.target.value });
   }
@@ -28,6 +28,7 @@ function Formulario({nome}) {
         // console.log(response.data);
       })
       .catch((erro) => console.log(erro));
+      navigate("/login")
   };
   // console.log(value);
   // function submit(e) {
